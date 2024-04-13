@@ -1,0 +1,12 @@
+/home/shuviu/ProgrammingProjects/CSharpProjects/AILibrary/AILibrary/bin/Debug/net8.0/AILibrary.deps.json
+/home/shuviu/ProgrammingProjects/CSharpProjects/AILibrary/AILibrary/bin/Debug/net8.0/AILibrary.dll
+/home/shuviu/ProgrammingProjects/CSharpProjects/AILibrary/AILibrary/bin/Debug/net8.0/AILibrary.pdb
+/home/shuviu/ProgrammingProjects/CSharpProjects/AILibrary/AILibrary/obj/Debug/net8.0/AILibrary.GeneratedMSBuildEditorConfig.editorconfig
+/home/shuviu/ProgrammingProjects/CSharpProjects/AILibrary/AILibrary/obj/Debug/net8.0/AILibrary.AssemblyInfoInputs.cache
+/home/shuviu/ProgrammingProjects/CSharpProjects/AILibrary/AILibrary/obj/Debug/net8.0/AILibrary.AssemblyInfo.cs
+/home/shuviu/ProgrammingProjects/CSharpProjects/AILibrary/AILibrary/obj/Debug/net8.0/AILibrary.csproj.CoreCompileInputs.cache
+/home/shuviu/ProgrammingProjects/CSharpProjects/AILibrary/AILibrary/obj/Debug/net8.0/AILibrary.sourcelink.json
+/home/shuviu/ProgrammingProjects/CSharpProjects/AILibrary/AILibrary/obj/Debug/net8.0/AILibrary.dll
+/home/shuviu/ProgrammingProjects/CSharpProjects/AILibrary/AILibrary/obj/Debug/net8.0/refint/AILibrary.dll
+/home/shuviu/ProgrammingProjects/CSharpProjects/AILibrary/AILibrary/obj/Debug/net8.0/AILibrary.pdb
+/home/shuviu/ProgrammingProjects/CSharpProjects/AILibrary/AILibrary/obj/Debug/net8.0/ref/AILibrary.dll
