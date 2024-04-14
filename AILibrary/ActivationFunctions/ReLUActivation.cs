@@ -2,7 +2,17 @@ namespace AILibrary;
 
 public class ReLUActivation{
 
-    public static List<double> ForwardPass(List<double> inputValues){
+    public List<double> Inputs { get; private set; }
+    public List<double> dInputs { get; private set; }
+
+    public ReLUActivation(){
+        Inputs = new List<double>{ };
+        dInputs = new List<double>{ };
+    }
+
+    public List<double> ForwardPass(List<double> inputValues){
+
+        Inputs = inputValues;
         List<double> output = new List<double>{ };
 
         // pass every value of inputValues through the ReLU function
@@ -14,7 +24,15 @@ public class ReLUActivation{
         return output;
     }
 
-    public static List<double> BackwardPass(List<double> dValues){
-        return new List<double>{ };
+    public void BackwardPass(List<double> dValues){
+        dInputs = dValues;
+
+        for (int i = 0; i < Inputs.Count; i++)
+        {
+            if (Inputs[i] <= 0)
+            {
+                dInputs[i] = 0;
+            }
+        }
     }
 }
