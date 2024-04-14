@@ -3,38 +3,38 @@
 public class Neuron
 
 {
-    public List<double> weights {get; private set; }
-    public double bias {get; private set; }
-    public int inputCount {get; private set; }
+    public List<double> Weights {get; private set; }
+    public double Bias {get; private set; }
+    public int InputCount {get; private set; }
 
     public Neuron(int input_size){
 
         // initialize new Random and Weight list
         Random rand = new Random();
-        weights = new List<double>{ };
+        Weights = new List<double>{ };
 
-        inputCount = input_size;
+        InputCount = input_size;
 
         // Assign random start values to both the bias and the weights
-        bias = rand.NextDouble();
+        Bias = rand.NextDouble();
         for (int i = 0; i < input_size; i++)
         {
-            weights.Add(rand.NextDouble());
+            Weights.Add(rand.NextDouble());
         }
     }
 
-    public void updateWeights(List<double> newWeights){
-        weights = newWeights;
+    public void UpdateWeights(List<double> newWeights){
+        Weights = newWeights;
     }
 
-    public void updateBias(double newBias){
-        bias = newBias;
+    public void UpdateBias(double newBias){
+        Bias = newBias;
     }
 
     // Calculates and returns the output of the neuron
-    public double calculateOutput(List<double> inputValues){
+    public double ForwardPass(List<double> inputValues){
         // Check if the inputValues have the right size
-        if (inputValues.Count != inputCount) 
+        if (inputValues.Count != InputCount) 
         {
             throw new Exception("The Length of the inputValue List does not correspond to the length of the set inputCount of the Neuron");
         }
@@ -43,10 +43,10 @@ public class Neuron
         double result  = 0; 
         for (int i = 0; i < inputValues.Count; i++)
         {
-            result += weights[i] * inputValues[i];
+            result += Weights[i] * inputValues[i];
         }
 
-        result += bias;
+        result += Bias;
         return result;
     }
 }
