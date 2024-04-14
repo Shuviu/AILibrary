@@ -3,19 +3,19 @@
 public class Neuron
 
 {
-    public List<double> Weights {get; private set; }
     public List<double> Inputs { get; private set; }
+    public List<double> Weights {get; private set; }
     public double Bias {get; private set; }
     public int InputCount {get; private set; }
 
     public Neuron(int input_size){
         
         Inputs = new List<double>{ };
+        InputCount = input_size;
+
         // initialize new Random and Weight list
         Random rand = new Random();
         Weights = new List<double>{ };
-
-        InputCount = input_size;
 
         // Assign random start values to both the bias and the weights
         Bias = rand.NextDouble();
@@ -42,7 +42,7 @@ public class Neuron
         }
         Inputs = inputValues;
         // calculate the dot product
-        double result  = 0; 
+        double result = 0; 
         for (int i = 0; i < inputValues.Count; i++)
         {
             result += Weights[i] * inputValues[i];

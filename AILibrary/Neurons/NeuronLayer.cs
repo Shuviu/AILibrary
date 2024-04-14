@@ -45,6 +45,11 @@ public class NeuronLayer
 
     public void BackwardPass(List<double> dValues){
 
+        if (dValues.Count != NeuronCount)
+        {
+            throw new Exception("The length of the dValues list does not correspond with the NeuronCount of the layer");
+        }
+
         // get the current weights of all Neurons in the layer
         List<List<double>> weights = new List<List<double>>{ };
         for (int i = 0; i < Neurons.Count; i++)
