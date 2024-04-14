@@ -4,11 +4,13 @@ public class Neuron
 
 {
     public List<double> Weights {get; private set; }
+    public List<double> Inputs { get; private set; }
     public double Bias {get; private set; }
     public int InputCount {get; private set; }
 
     public Neuron(int input_size){
-
+        
+        Inputs = new List<double>{ };
         // initialize new Random and Weight list
         Random rand = new Random();
         Weights = new List<double>{ };
@@ -38,7 +40,7 @@ public class Neuron
         {
             throw new Exception("The Length of the inputValue List does not correspond to the length of the set inputCount of the Neuron");
         }
-        
+        Inputs = inputValues;
         // calculate the dot product
         double result  = 0; 
         for (int i = 0; i < inputValues.Count; i++)
