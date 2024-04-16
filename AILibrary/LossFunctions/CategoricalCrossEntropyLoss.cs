@@ -4,12 +4,13 @@ public class CategoricalCrossEntropyLoss{
 
 
     public List<double> dInputs { get; private set; }
+    public double Output { get; private set; }
 
     public CategoricalCrossEntropyLoss(){
         dInputs = new List<double>{ };
     }
 
-    public double ForwardPass(List<double> predictedDistribution, List<double> desiredDistribution){
+    public void ForwardPass(List<double> predictedDistribution, List<double> desiredDistribution){
         
         // Length check for both input vectors
         if (predictedDistribution.Count != desiredDistribution.Count)
@@ -24,7 +25,7 @@ public class CategoricalCrossEntropyLoss{
             loss += -(desiredDistribution[i] * Math.Log(predictedDistribution[i]));
         }
 
-        return loss; 
+        Output = loss; 
     }
 
     public void BackwardPass(List<double> dValues, List<int> trueValues, bool oneHotEncoded){

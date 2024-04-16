@@ -4,24 +4,24 @@ public class ReLUActivation{
 
     public List<double> Inputs { get; private set; }
     public List<double> dInputs { get; private set; }
+    public List<double> Outputs { get; private set; }
 
     public ReLUActivation(){
         Inputs = new List<double>{ };
         dInputs = new List<double>{ };
+        Outputs = new List<double> { };
     }
 
-    public List<double> ForwardPass(List<double> inputValues){
+    public void ForwardPass(List<double> inputValues){
 
         Inputs = inputValues;
-        List<double> output = new List<double>{ };
+        Outputs.Clear();
 
         // pass every value of inputValues through the ReLU function
         for (int i = 0; i < inputValues.Count; i++)
         {
-            output.Add(Math.Max(0, inputValues[i]));
+            Outputs.Add(Math.Max(0, inputValues[i]));
         }
-
-        return output;
     }
 
     public void BackwardPass(List<double> dValues){

@@ -10,7 +10,7 @@ public class SoftMaxActivation{
         dInputs = new List<double>{ };
     }
 
-    public List<double> ForwardPass(List<double> inputValues){
+    public void ForwardPass(List<double> inputValues){
         Outputs.Clear();
         double expSum = 0.0;
 
@@ -25,8 +25,6 @@ public class SoftMaxActivation{
         {
             Outputs.Add(Math.Pow(Math.E, inputValues[i]) / expSum);
         }
-        
-        return Outputs;
     }
 
     public void BackwardPass(List<double> dValues)

@@ -5,6 +5,9 @@ public class NeuronLayer
     private List<Neuron> Neurons { get; set; }
     public int NeuronCount { get; private set; }
     public int InputCount { get; private set; }
+    
+    // Outputs of the forward function 
+    public List<double> Outputs { get; private set; }
     // derivative of the Inputs
     public List<double>? dInputs { get; private set; }
     // derivative of the Weights
@@ -16,6 +19,7 @@ public class NeuronLayer
         // set relevant params
         NeuronCount = numberOfNeurons;
         InputCount = numberOfInputs;
+        Outputs = new List<double> { };
 
         // initialize and create the neurons 
         Neurons = new List<Neuron>{ };
@@ -25,22 +29,19 @@ public class NeuronLayer
         }
     }
 
-    public List<double> ForwardPass(List<double> inputValues){
+    public void ForwardPass(List<double> inputValues){
         // check if the count of the passed Inputs corresponds to the set inputCount of the layer
         if (InputCount != inputValues.Count)
         {
             throw new Exception("The Length of the inputValue List does not correspond to the length of the set inputSize of the Layer");
         }
 
-        List<double> outputs = new List<double>{};
-
+        Outputs.Clear();
         // calculate the output of each neuron
         for (int i = 0; i < Neurons.Count; i++)
         {
-            outputs.Add(Neurons[i].ForwardPass(inputValues));
+            Outputs.Add(Neurons[i].ForwardPass(inputValues));
         }
-        
-        return outputs; 
     }
 
     public void BackwardPass(List<double> dValues){
