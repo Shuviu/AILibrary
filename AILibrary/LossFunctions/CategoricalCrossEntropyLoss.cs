@@ -52,7 +52,7 @@ public class CategoricalCrossEntropyLoss{
             groundTruth = trueValues;
         }
 
-        dInputs = new List<double>{ };
+        dInputs.Clear();
         // calculate the derivative of the loss function and add it to dInputs
         for (int i = 0; i < dValues.Count; i++)
         {
