@@ -10,7 +10,7 @@ public class CategoricalCrossEntropyLoss{
         dInputs = new List<double>{ };
     }
 
-    public void ForwardPass(List<double> predictedDistribution, List<double> desiredDistribution){
+    public void ForwardPass(List<double> predictedDistribution, List<int> desiredDistribution){
         
         // Length check for both input vectors
         if (predictedDistribution.Count != desiredDistribution.Count)

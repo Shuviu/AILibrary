@@ -5,7 +5,7 @@ public class NeuronLayer
     private List<Neuron> Neurons { get; set; }
     public int NeuronCount { get; private set; }
     public int InputCount { get; private set; }
-    
+
     // Outputs of the forward function 
     public List<double> Outputs { get; private set; }
     // derivative of the Inputs
@@ -23,7 +23,7 @@ public class NeuronLayer
 
         // initialize and create the neurons 
         Neurons = new List<Neuron>{ };
-        for (int i = 0; i < numberOfInputs; i++)
+        for (int i = 0; i < numberOfNeurons; i++)
         {
             Neurons.Add(new Neuron(numberOfInputs));
         }
@@ -69,12 +69,12 @@ public class NeuronLayer
         List<double> derivatives = new List<double>{ };
 
         // calculate the dot product to get dInputs
-        for (int i = 0; i < weights.Count; i++)
+        for (int i = 0; i < weights[0].Count; i++)
         {
             double temp = 0.0;
             for (int j = 0; j < dValues.Count; j++)
             {
-                temp += dValues[j] * weights[i][j];
+                temp += dValues[j] * weights[j][i];
             }
 
             derivatives.Add(temp);
