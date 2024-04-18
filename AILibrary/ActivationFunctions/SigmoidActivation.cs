@@ -1,8 +1,13 @@
 namespace AILibrary;
 
-public class SigmoidActivation{
+public class SigmoidActivation : IActivationFunction{
 
-    public static List<double> ForwardPass(List<double> inputValues){
+
+    public SigmoidActivation(){
+        throw new Exception("Not implemted owo");
+    }    
+
+    public void ForwardPass(List<double> inputValues){
         List<double> output = new List<double>{ };
 
         // pass every value of the inputValues through the Sigmoid function
@@ -10,11 +15,8 @@ public class SigmoidActivation{
         {
             output.Add(1.0 / (1.0 + Math.Pow(Math.E, -inputValues[i])));
         }
-
-        return output;
     }
 
-    public static List<double> BackwardPass(List<double> dValues){
-        return new List<double>{ };
+    public void BackwardPass(List<double> dValues){
     }
 }

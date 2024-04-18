@@ -1,6 +1,6 @@
 namespace AILibrary;
 
-public class SoftMaxActivation{
+public class SoftMaxActivation : IActivationFunction{
 
     public List<double> Outputs { get; private set; }
     public List<double> dInputs { get; private set; }

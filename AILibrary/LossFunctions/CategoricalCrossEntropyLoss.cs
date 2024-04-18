@@ -1,6 +1,6 @@
 namespace AILibrary;
 
-public class CategoricalCrossEntropyLoss{
+public class CategoricalCrossEntropyLoss : ILossFunction {
 
 
     public List<double> dInputs { get; private set; }
@@ -10,7 +10,7 @@ public class CategoricalCrossEntropyLoss{
         dInputs = new List<double>{ };
     }
 
-    public void ForwardPass(List<double> predictedDistribution, List<int> desiredDistribution){
+    public void CalculateLoss(List<double> predictedDistribution, List<int> desiredDistribution){
         
         // Length check for both input vectors
         if (predictedDistribution.Count != desiredDistribution.Count)
@@ -58,7 +58,7 @@ public class CategoricalCrossEntropyLoss{
         for (int i = 0; i < dValues.Count; i++)
         {
             // add a small error to the dValue to prevent division by 0 owo
-            dInputs.Add(-groundTruth[i] / (dValues[i] + 0.000001));
+            dInputs.Add(-groundTruth[i] / (dValues[i] + 0.001));
         }
     }
 }

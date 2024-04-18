@@ -2,7 +2,7 @@ namespace AILibrary;
 
 public class NeuronLayer
 {
-    private List<Neuron> Neurons { get; set; }
+    public List<Neuron> Neurons { get; private set; }
     public int NeuronCount { get; private set; }
     public int InputCount { get; private set; }
 

@@ -1,6 +1,6 @@
 namespace AILibrary;
 
-public class ReLUActivation{
+public class ReLUActivation : IActivationFunction{
 
     public List<double> Inputs { get; private set; }
     public List<double> dInputs { get; private set; }
