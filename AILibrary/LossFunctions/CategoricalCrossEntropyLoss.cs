@@ -9,6 +9,13 @@ public class CategoricalCrossEntropyLoss : ILossFunction {
     public CategoricalCrossEntropyLoss(){
         dInputs = new List<double>{ };
     }
+    public double getOutput(){
+        return Output;
+    }
+
+    public List<double> getDInputs(){
+        return dInputs;
+    }
 
     public void CalculateLoss(List<double> predictedDistribution, List<int> desiredDistribution){
         

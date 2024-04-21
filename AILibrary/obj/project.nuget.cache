@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VqSGRGx+YuQqUMh/Fw1SkW7mToT1pUjDBgYfZLElmxi+bst7ve/vw9SI+KzDMvwnoRVfuQgtVsuALBY6HgQq7Q==",
+  "dgSpecHash": "J+7/dnPoo9gweLiCRU/7W6su5Yg3tUKX/+dppUYa9BJBzXvt4SvBEfeP0TuA1JM/VzOeB3wz82Afe2S80IuNOA==",
   "success": true,
-  "projectFilePath": "/home/shuviu/ProgrammingProjects/CSharpProjects/AILibrary/AILibrary/AILibrary.csproj",
-  "expectedPackageFiles": [
-    "/home/shuviu/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.4/microsoft.aspnetcore.app.ref.8.0.4.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\ProgrammingProjects\\CSharpUwU\\AILibrary\\AILibrary\\AILibrary.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
