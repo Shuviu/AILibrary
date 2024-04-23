@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "/home/shuv/.nuget/packages/": {}
+    "C:\\Users\\Shuviu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/shuv/ProgrammingProjects/CSharpUwU/AILibrary/AILibrary/AILibrary/AILibrary.csproj",
+      "projectUniqueName": "C:\\ProgrammingProjects\\CSharpUwU\\AILibrary\\AILibrary\\AILibrary.csproj",
       "projectName": "AILibrary",
-      "projectPath": "/home/shuv/ProgrammingProjects/CSharpUwU/AILibrary/AILibrary/AILibrary/AILibrary.csproj",
-      "packagesPath": "/home/shuv/.nuget/packages/",
-      "outputPath": "/home/shuv/ProgrammingProjects/CSharpUwU/AILibrary/AILibrary/AILibrary/obj/",
+      "projectPath": "C:\\ProgrammingProjects\\CSharpUwU\\AILibrary\\AILibrary\\AILibrary.csproj",
+      "packagesPath": "C:\\Users\\Shuviu\\.nuget\\packages\\",
+      "outputPath": "C:\\ProgrammingProjects\\CSharpUwU\\AILibrary\\AILibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/shuv/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Shuviu\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -38,6 +38,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -54,18 +59,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.4, 8.0.4]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.104/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

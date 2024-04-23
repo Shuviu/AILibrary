@@ -9,7 +9,7 @@ public class Trainer
 
     public ILossFunction LossFunction { get; private set; }
     public IOptimizer Optimizer { get; private set; }
-    public List<NeuronLayer> NeuronLayers { get; private set; }
+    public List<ILayer> Layers { get; private set; }
     public Dataset? CurrentDataset { get; private set; }
     public double CurrentLoss { get; private set; }
     public double CurrentAccuracy { get; private set; }
@@ -20,12 +20,12 @@ public class Trainer
     {
         LossFunction = lossFunction;
         Optimizer = optimizer;
-        NeuronLayers = new List<NeuronLayer> { };
+        Layers = new List<ILayer> { };
     }
 
-    public void AddNeuronLayer(int inputcount, int neuronCount)
+    public void AddNeuronLayer(ILayer layer)
     {
-        NeuronLayers.Add(new NeuronLayer(inputcount, neuronCount));
+        Layers.Add(layer);
     }
 
     public void UpdateDataset(Dataset dataset)
@@ -47,42 +47,47 @@ public class Trainer
         {
             for (int i = 0; i < trainset.Samples.Count; i++)
             {
-                List<double> layerInput = trainset.Samples[i];
-                foreach (var NeuronLayer in NeuronLayers)
-                {
-                    NeuronLayer.ForwardPass(layerInput);
-                    layerInput = NeuronLayer.Outputs;
-                }
-                softMaxActivation.ForwardPass(layerInput);
-                LossFunction.CalculateLoss(softMaxActivation.Outputs, trainset.Labels[i]);
-
-                System.Console.WriteLine(LossFunction.getOutput());
-                LossFunction.BackwardPass(softMaxActivation.Outputs, trainset.Labels[i], true);
-                softMaxActivation.BackwardPass(LossFunction.getDInputs());
-
-                List<double> dValues = softMaxActivation.dInputs;
-                for (int j = NeuronLayers.Count - 1; j >= 0; j--)
-                {
-                    NeuronLayer neuronLayer = NeuronLayers[j];
-
-                    neuronLayer.BackwardPass(dValues);
-                    if (neuronLayer.dInputs == null)
-                    {
-                        throw new Exception("dInputs of a NeuronLayer is null!");
-                    }
-                    dValues = neuronLayer.dInputs;
-
-                    if (neuronLayer is IActivationFunction)
-                    {
-                        System.Console.WriteLine("Is activationFunction");
-                        break;
-                    }
-                    Optimizer.UpdateParams(neuronLayer);
-                }
+                ForwardPass(trainset.Samples[i], trainset.Labels[i], softMaxActivation);
+                System.Console.WriteLine($"Current Iteration: {i}, Current Loss: {LossFunction.getOutput()}, Current Predictions: {softMaxActivation.Outputs[0]} {softMaxActivation.Outputs[1]}, True Label: {trainset.Labels[i][0]} {trainset.Labels[i][1]}");
+                BackwardPass(trainset.Labels[i], softMaxActivation);
             }
         }
+    }
 
+    private void ForwardPass(List<double> sample, List<int> label, SoftMaxActivation softMaxActivation)
+    {
+        List<double> layerInput = sample;
+        foreach (var NeuronLayer in Layers)
+        {
+            NeuronLayer.ForwardPass(layerInput);
+            layerInput = NeuronLayer.GetOutputs();
+        }
+        softMaxActivation.ForwardPass(layerInput);
+        LossFunction.CalculateLoss(softMaxActivation.Outputs, label);
+    }
 
+    private void BackwardPass(List<int> label, SoftMaxActivation softMaxActivation)
+    {
+        LossFunction.BackwardPass(softMaxActivation.Outputs, label, true);
+        softMaxActivation.BackwardPass(LossFunction.getDInputs());
+
+        List<double> dValues = softMaxActivation.dInputs;
+        for (int j = Layers.Count - 1; j >= 0; j--)
+        {
+            ILayer layer = Layers[j];
+
+            layer.BackwardPass(dValues);
+            if (layer.GetDInputs() == null)
+            {
+                throw new Exception("dInputs of a NeuronLayer is null!");
+            }
+            dValues = layer.GetDInputs();
+
+            if (layer is NeuronLayer)
+            {
+                Optimizer.UpdateParams((NeuronLayer)layer);
+            }
+        }
     }
 
     public void Predict()

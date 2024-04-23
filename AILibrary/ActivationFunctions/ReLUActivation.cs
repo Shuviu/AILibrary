@@ -1,6 +1,6 @@
 namespace AILibrary;
 
-public class ReLUActivation : IActivationFunction{
+public class ReLUActivation : ILayer{
 
     public List<double> Inputs { get; private set; }
     public List<double> dInputs { get; private set; }
@@ -34,5 +34,13 @@ public class ReLUActivation : IActivationFunction{
                 dInputs[i] = 0;
             }
         }
+    }
+    
+    public List<double> GetOutputs(){
+        return Outputs;
+    }
+
+    public List<double> GetDInputs(){
+        return dInputs;
     }
 }

@@ -15,9 +15,8 @@ public class SpiralDatasetGen{
         Labels = new();
     }
 
-    public void GenerateSamples(){
+    public void GenerateSamples(int numClasses){
         double points = 96 * Density;
-        Random rand = new Random();
 
         for (int i = 0; i < points; i++)
         {
@@ -28,16 +27,23 @@ public class SpiralDatasetGen{
             double x = radius * Math.Cos(angle);
             double y = radius * Math.Sin(angle);
 
-            if (rand.Next(1,3) == 1)
+            Samples.Add(new List<double>{x, y});
+            Labels.Add(new List<int>{0, 1});
+
+            if (numClasses > 1)
             {
-                Samples.Add(new List<double>{x, y});
+                Samples.Add(new List<double>{ -x, -y});
                 Labels.Add(new List<int>{1, 0});
             }
-            else
-            {
-                Samples.Add(new List<double>{-x, -y});
-                Labels.Add(new List<int>{0, 1});
-            }
+        }
+
+    }
+
+    public void NormalizeSamples(){
+        for (int i = 0; i < Samples.Count; i++)
+        {
+            Samples[i][0] = Samples[i][0] / 1000;
+            Samples[i][1] = Samples[i][1] / 1000;
         }
     }
 

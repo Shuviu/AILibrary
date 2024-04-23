@@ -1,6 +1,6 @@
 namespace AILibrary;
 
-public class NeuronLayer
+public class NeuronLayer : ILayer
 {
     public List<Neuron> Neurons { get; private set; }
     public int NeuronCount { get; private set; }
@@ -61,6 +61,18 @@ public class NeuronLayer
         dInputs = calculateDInputs(weights, dValues);
         dWeights = calculateDWeights(dValues);
         dBiases = calculateDBiases(dValues);
+    }
+
+    public List<double> GetOutputs(){
+        return Outputs;
+    }
+
+    public List<double> GetDInputs(){
+        if (dInputs == null)
+        {
+            throw new Exception("The dInputs of the layer are null");
+        }
+        return dInputs;
     }
 
     // calculate the derivatives for the layer Inputs
