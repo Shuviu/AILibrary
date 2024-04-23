@@ -7,7 +7,6 @@ namespace AILibrary;
 public class Trainer
 {
 
-    public IActivationFunction CategorizationFunction { get; private set; }
     public ILossFunction LossFunction { get; private set; }
     public IOptimizer Optimizer { get; private set; }
     public List<NeuronLayer> NeuronLayers { get; private set; }
@@ -17,9 +16,8 @@ public class Trainer
     public String? CurrentDebugOutput { get; private set; }
     public VariantType? CurrentPrediction { get; private set; }
 
-    public Trainer(IActivationFunction categorizationFunction, ILossFunction lossFunction, IOptimizer optimizer)
+    public Trainer(ILossFunction lossFunction, IOptimizer optimizer)
     {
-        CategorizationFunction = categorizationFunction;
         LossFunction = lossFunction;
         Optimizer = optimizer;
         NeuronLayers = new List<NeuronLayer> { };
