@@ -28,13 +28,26 @@ public class SoftMaxActivation : IActivationFunction{
     }
 
     public void BackwardPass(List<double> dValues)
-    {
-        dInputs.Clear();
-        List<double> softmaxOutputs = Outputs;
-        // Calculate the derivate for the SoftMax function
-        for (int i = 0; i < softmaxOutputs.Count; i++)
         {
-            dInputs.Add(dValues[i] * softmaxOutputs[i] * (1 - softmaxOutputs[i]));
+            dInputs.Clear();
+            List<double> softmaxOutputs = Outputs;
+
+            // Calculate the derivate for the SoftMax function
+            for (int i = 0; i < softmaxOutputs.Count; i++)
+            {
+                double derivative = 0.0;
+                for (int j = 0; j < softmaxOutputs.Count; j++)
+                {
+                    if (i == j)
+                    {
+                        derivative += softmaxOutputs[i] * (1 - softmaxOutputs[i]);
+                    }
+                    else
+                    {
+                        derivative += -softmaxOutputs[i] * softmaxOutputs[j];
+                    }
+                }
+                dInputs.Add(dValues[i] * derivative);
+            }
         }
-    }
 }

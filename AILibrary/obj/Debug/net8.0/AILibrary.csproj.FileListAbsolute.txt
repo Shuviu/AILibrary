@@ -34,15 +34,3 @@ C:/ProgrammingProjects/CSharpUwU/AILibrary/AILibrary/obj/Debug/net8.0/ref/AILibr
 /home/shuv/ProgrammingProjects/CSharpUwU/AILibrary/AILibrary/AILibrary/obj/Debug/net8.0/refint/AILibrary.dll
 /home/shuv/ProgrammingProjects/CSharpUwU/AILibrary/AILibrary/AILibrary/obj/Debug/net8.0/AILibrary.pdb
 /home/shuv/ProgrammingProjects/CSharpUwU/AILibrary/AILibrary/AILibrary/obj/Debug/net8.0/ref/AILibrary.dll
-C:\ProgrammingProjects\CSharpUwU\AILibrary\AILibrary\bin\Debug\net8.0\AILibrary.deps.json
-C:\ProgrammingProjects\CSharpUwU\AILibrary\AILibrary\bin\Debug\net8.0\AILibrary.dll
-C:\ProgrammingProjects\CSharpUwU\AILibrary\AILibrary\bin\Debug\net8.0\AILibrary.pdb
-C:\ProgrammingProjects\CSharpUwU\AILibrary\AILibrary\obj\Debug\net8.0\AILibrary.GeneratedMSBuildEditorConfig.editorconfig
-C:\ProgrammingProjects\CSharpUwU\AILibrary\AILibrary\obj\Debug\net8.0\AILibrary.AssemblyInfoInputs.cache
-C:\ProgrammingProjects\CSharpUwU\AILibrary\AILibrary\obj\Debug\net8.0\AILibrary.AssemblyInfo.cs
-C:\ProgrammingProjects\CSharpUwU\AILibrary\AILibrary\obj\Debug\net8.0\AILibrary.csproj.CoreCompileInputs.cache
-C:\ProgrammingProjects\CSharpUwU\AILibrary\AILibrary\obj\Debug\net8.0\AILibrary.sourcelink.json
-C:\ProgrammingProjects\CSharpUwU\AILibrary\AILibrary\obj\Debug\net8.0\AILibrary.dll
-C:\ProgrammingProjects\CSharpUwU\AILibrary\AILibrary\obj\Debug\net8.0\refint\AILibrary.dll
-C:\ProgrammingProjects\CSharpUwU\AILibrary\AILibrary\obj\Debug\net8.0\AILibrary.pdb
-C:\ProgrammingProjects\CSharpUwU\AILibrary\AILibrary\obj\Debug\net8.0\ref\AILibrary.dll

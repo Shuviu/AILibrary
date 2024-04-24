@@ -48,8 +48,11 @@ public class Trainer
             for (int i = 0; i < trainset.Samples.Count; i++)
             {
                 ForwardPass(trainset.Samples[i], trainset.Labels[i], softMaxActivation);
-                System.Console.WriteLine($"Current Iteration: {i}, Current Loss: {LossFunction.getOutput()}, Current Predictions: {softMaxActivation.Outputs[0]} {softMaxActivation.Outputs[1]}, True Label: {trainset.Labels[i][0]} {trainset.Labels[i][1]}");
                 BackwardPass(trainset.Labels[i], softMaxActivation);
+            }
+            if (x%5 == 0)
+            {   
+            System.Console.WriteLine($"Current Iteration: {x}, Current Loss: {LossFunction.getOutput()}, Current Predictions: {softMaxActivation.Outputs[0]} {softMaxActivation.Outputs[1]}");
             }
         }
     }
@@ -85,6 +88,8 @@ public class Trainer
 
             if (layer is NeuronLayer)
             {
+                NeuronLayer neuronLayer = (NeuronLayer) layer;
+                System.Console.WriteLine("dWeights: " + neuronLayer.dWeights[0][0]);
                 Optimizer.UpdateParams((NeuronLayer)layer);
             }
         }

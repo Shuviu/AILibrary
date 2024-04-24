@@ -58,7 +58,7 @@ public class NeuronLayer : ILayer
             weights.Add(Neurons[i].Weights);
         }
         // calculate the derivates using the helper methods
-        dInputs = calculateDInputs(weights, dValues);
+        dInputs = calculateDInputs(dValues);
         dWeights = calculateDWeights(dValues);
         dBiases = calculateDBiases(dValues);
     }
@@ -76,65 +76,56 @@ public class NeuronLayer : ILayer
     }
 
     // calculate the derivatives for the layer Inputs
-    private List<double> calculateDInputs(List<List<double>> weights, List<double> dValues){
-
-        List<double> derivatives = new List<double>{ };
+    private List<double> calculateDInputs(List<double> dValues)
+    {
+        List<double> derivatives = new List<double>();
 
         // calculate the dot product to get dInputs
-        for (int i = 0; i < weights[0].Count; i++)
+        for (int i = 0; i < Neurons[0].Weights.Count; i++)
         {
             double temp = 0.0;
             for (int j = 0; j < dValues.Count; j++)
             {
-                temp += dValues[j] * weights[j][i];
+                temp += dValues[j] * Neurons[j].Weights[i];
             }
 
             derivatives.Add(temp);
         }
-
         return derivatives;
-    }
+}
 
-    private List<double> calculateDBiases(List<double> dValues){
+private List<List<double>> calculateDWeights(List<double> dValues)
+{
+    dWeights = new List<List<double>>();
 
-        List<double> derivatives = new List<double>{ };
+    for (int i = 0; i < Neurons.Count; i++)
+    {
+        Neuron neuron = Neurons[i];
+        List<double> neuronDWeights = new List<double>();
 
-        // get the Sum of dValues to get dBias
-        double temp = 0.0;
-        for (int i = 0; i < dValues.Count; i++)
+        for (int j = 0; j < neuron.Weights.Count; j++)
         {
-            temp += dValues[i];
-        }
-        // add the derivative for each Neuron to the list
-        for (int i = 0; i < NeuronCount; i++)
-        {
-            derivatives.Add(temp);
-        }
-        
-        return derivatives;
-    }
-
-    private List<List<double>> calculateDWeights(List<double> dValues){
-
-        List<List<double>> derivatives = new List<List<double>>{ };
-
-        // Iterate over neurons in the layer
-        for (int i = 0; i < Neurons.Count; i++)
-        {
-            Neuron neuron = Neurons[i];
-            List<double> neuronDWeights = new List<double>();
-
-            // Iterate over weights of the neuron
-            for (int j = 0; j < neuron.Weights.Count; j++)
-            {
-                // Compute the derivative of the weight using chain rule
-                double dWeight = dValues[i] * neuron.Inputs[j];
-                neuronDWeights.Add(dWeight);
-            }
-
-            derivatives.Add(neuronDWeights);
+            // Compute the derivative of the weight using chain rule
+            double dWeight = dValues[i] * neuron.Inputs[j];
+            neuronDWeights.Add(dWeight);
         }
 
-        return derivatives;
+        dWeights.Add(neuronDWeights);
     }
+    return dWeights;
+}
+
+private List<double> calculateDBiases(List<double> dValues)
+{
+    // Calculate dBiases
+    double sum = dValues.Sum();
+
+    dBiases = new List<double>();
+    for (int i = 0; i < NeuronCount; i++)
+    {
+        dBiases.Add(sum);
+    }
+
+    return dBiases;
+}
 }

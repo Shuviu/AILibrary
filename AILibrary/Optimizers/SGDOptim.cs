@@ -26,17 +26,13 @@ public class SGDOptim : IOptimizer {
         List<List<double>> dWeights = layer.dWeights;
 
         // Calculate and set adjustedWeights for each Neuron
-        for (int i = 0; i < neurons.Count; i++)
-        {
-            List<double> adjustedWeights = CalculateAdjustedWeights(neurons[i], dWeights[i]);
-            neurons[i].UpdateWeights(adjustedWeights);
+        for (int i = 0; i < neurons.Count; i++){
+            neurons[i].UpdateWeights(CalculateAdjustedWeights(neurons[i], dWeights[i]));
         }
 
         // Calculate and set adjustedBiases for each Neuron
         for (int i = 0; i < neurons.Count; i++){
-            double adjustedBias = CalculateAdjustedBias(neurons[i], dBiases[i]);
-
-            neurons[i].UpdateBias(adjustedBias);
+            neurons[i].UpdateBias(CalculateAdjustedBias(neurons[i], dBiases[i]));
         }
     }
 
